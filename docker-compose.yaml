@@ -1,0 +1,16 @@
+services:
+  rag-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rag-app
+    volumes:
+      - .dockervenv:/src/.venv
+      - .:/src
+    ports:
+      - 8000:8000 # host:docker
+    env_file:
+      - .env
+    environment:
+      - WATCHFILES_FORCE_POLLING=true
+
